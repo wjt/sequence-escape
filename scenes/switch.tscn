@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/switch.gd" id="1_ygnok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8sy5"]
+size = Vector2(16, 16)
 
 [node name="Switch" type="StaticBody2D"]
 script = ExtResource("1_ygnok")

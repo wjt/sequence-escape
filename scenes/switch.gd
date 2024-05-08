@@ -14,4 +14,4 @@ func _ready():
 	update_sprite()
 
 func update_sprite():
-	$Sprite2D.frame = (12 * colour) + (2 if switched_on else 0)
+	$Sprite2D.frame_coords = Vector2(2 if switched_on else 0, colour)
