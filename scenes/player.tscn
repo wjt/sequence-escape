@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cp3drkse8mtm0"]
+[gd_scene load_steps=20 format=3 uid="uid://cp3drkse8mtm0"]
 
 [ext_resource type="Texture2D" uid="uid://crfa4feash4rg" path="res://assets/sprite/free_character_0.png" id="1_a1bxp"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_bn62o"]
@@ -148,13 +148,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01oyb"]
+size = Vector2(32, 32)
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_bn62o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_haywf")
-animation = &"slash_down"
-frame_progress = 0.913348
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_01oyb")
