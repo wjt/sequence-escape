@@ -38,6 +38,12 @@ jobs:
         run: |
           mkdir -v -p build/web
           godot --headless --verbose --export-release "HTML5" ./build/web/index.html
+
+      # See: https://github.com/godotengine/godot-docs/issues/7084
+      - name: Workaround for SharedArrayBuffer support on GitHub Pages
+        run: |
+          cp build-aux/coi-serviceworker.js build/web
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
