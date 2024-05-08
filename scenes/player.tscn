@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp3drkse8mtm0"]
+[gd_scene load_steps=16 format=3 uid="uid://cp3drkse8mtm0"]
 
 [ext_resource type="Texture2D" uid="uid://crfa4feash4rg" path="res://assets/sprite/free_character_0.png" id="1_a1bxp"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_bn62o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn6ao"]
 atlas = ExtResource("1_a1bxp")
@@ -122,6 +123,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_bn62o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_haywf")
