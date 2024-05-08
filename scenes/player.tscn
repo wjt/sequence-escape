@@ -1,7 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cp3drkse8mtm0"]
+[gd_scene load_steps=19 format=3 uid="uid://cp3drkse8mtm0"]
 
 [ext_resource type="Texture2D" uid="uid://crfa4feash4rg" path="res://assets/sprite/free_character_0.png" id="1_a1bxp"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_bn62o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg77l"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1m3f"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5grr"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn6ao"]
 atlas = ExtResource("1_a1bxp")
@@ -53,6 +65,20 @@ region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_haywf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg77l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1m3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5grr")
+}],
+"loop": true,
+"name": &"slash_down",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bn6ao")
@@ -123,12 +149,12 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_bn62o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_haywf")
-animation = &"walk_down"
-frame = 3
-frame_progress = 0.422839
+animation = &"slash_down"
+frame_progress = 0.913348
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
