@@ -5,6 +5,13 @@ extends Node2D
 var tile_size = 16  # FIXME
 var _astar: AStarGrid2D = AStarGrid2D.new()
 
+var _animations = {
+	Vector2.DOWN: "walk_down",
+	Vector2.UP: "walk_up",
+	Vector2.LEFT: "walk_left",
+	Vector2.RIGHT: "walk_right",
+}
+
 func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
@@ -47,7 +54,9 @@ func move():
 	print("Moving towards ", closest_switch)
 	assert(closest_switch_path.size() >= 2)
 	if closest_switch_path.size() > 2:
-		$GridMovement.move(closest_switch_path[1] - closest_switch_path[0])
+		var direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
+		if $GridMovement.move(direction):
+			$AnimatedSprite2D.play(_animations[direction])
 	elif closest_switch_path.size() == 2:
 		closest_switch.flip()
 	
