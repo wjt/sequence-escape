@@ -3046,14 +3046,14 @@ tile_map = NodePath("../TileMap")
 [node name="Player" parent="." instance=ExtResource("1_xidqi")]
 position = Vector2(16, 16)
 
-[node name="Switch" parent="." instance=ExtResource("3_l1rt0")]
+[node name="GreenSwitch" parent="." instance=ExtResource("3_l1rt0")]
 position = Vector2(72, 40)
 
-[node name="Switch2" parent="." instance=ExtResource("3_l1rt0")]
+[node name="RedSwitch" parent="." instance=ExtResource("3_l1rt0")]
 position = Vector2(136, 136)
 colour = 1
 
-[node name="Switch3" parent="." instance=ExtResource("3_l1rt0")]
+[node name="BlueSwitch" parent="." instance=ExtResource("3_l1rt0")]
 position = Vector2(184, 40)
 colour = 2
 

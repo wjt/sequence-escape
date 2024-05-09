@@ -26,7 +26,7 @@ func move(direction: Vector2) -> bool:
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 			return true
 		else:
-			print("Collided with ", $RayCast2D.get_collider())
+			print(self_node.name, " collided with ", $RayCast2D.get_collider().name)
 
 	return false
 

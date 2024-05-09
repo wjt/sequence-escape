@@ -34,15 +34,12 @@ func _ready():
 			# This is just the index into the TileSet of the "grass" tile
 			# TODO: Find a less hacky way to detect when a cell is barrier
 			if tile_map.get_cell_atlas_coords(0, pos) != Vector2i(1, 4):
-				print("solid", pos)
 				_astar.set_point_solid(pos)
 
 	for switch in _switches:
-		var cell = tile_map.local_to_map(switch.position)
-		print("solid", cell)
-		_astar.set_point_solid(cell)
+		_astar.set_point_solid(tile_map.local_to_map(switch.position))
 		
-# TODO: route around player
+# TODO: route around player?
 func move():
 	var closest_switch = null
 	var closest_switch_path: PackedVector2Array = PackedVector2Array()
@@ -63,7 +60,7 @@ func move():
 		# TODO: move in a random direction?
 		return
 	
-	print("Moving towards ", closest_switch)
+	print(name, " moving towards ", closest_switch.name)
 	assert(closest_switch_path.size() >= 2)
 	if closest_switch_path.size() > 2:
 		var direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
