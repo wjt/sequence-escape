@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://baeo57s02th28"]
+
+[ext_resource type="FontFile" uid="uid://df2pkowyyiq1a" path="res://assets/NotJamUICondensed16/Not Jam UI Condensed 16.ttf" id="1_jvc1o"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+scale = Vector2(1, 0.948201)
+theme_override_fonts/font = ExtResource("1_jvc1o")
+theme_override_font_sizes/font_size = 16
