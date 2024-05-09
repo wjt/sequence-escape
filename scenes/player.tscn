@@ -57,6 +57,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bn6ao")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn6ao")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qc45v")
@@ -72,7 +80,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_down",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -92,7 +100,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_left",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -112,7 +120,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_right",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -132,13 +140,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_up",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="Player" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_haywf")
 animation = &"walk_down"
-autoplay = "walk_down"
+autoplay = "new_animation"
 offset = Vector2(0, 4)
 script = ExtResource("1_bn62o")
 

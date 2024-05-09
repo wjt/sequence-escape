@@ -13,20 +13,13 @@ func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 
-func _process(_delta):
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	$GridMovement.move(input_direction)
-
-func _process_gone(_delta):
+func _unhandled_input(event):
 	for dir in inputs:
 		if Input.is_action_just_pressed(dir):
-			# FIXME: make animation names match actions
-			play(dir.replace("move_", "walk_"))
-			var tween = self.create_tween()
-			tween.set_trans(Tween.TRANS_LINEAR)
-			tween.tween_property(self, "position", position + inputs[dir] * tile_size, 0.5)
+			var collided_with = $GridMovement.move(inputs[dir])
+			if collided_with:
+				pass
+			else:
+				# FIXME: make animation names match actions
+				play(dir.replace("move_", "walk_"))
 			break
-
-#func _physics_process(delta):
-	#get_input()
-	#move_and_collide(velocity * delta)

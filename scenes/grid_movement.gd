@@ -1,6 +1,6 @@
 extends Node2D
 @export var self_node: Node2D
-@export var speed: float = 0.35
+@export var speed: float = .25
 
 var moving_direction: Vector2 = Vector2.ZERO
 
@@ -16,7 +16,9 @@ func move(direction: Vector2) -> void:
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
 		
 		# Allow movement only if no collision in next tile
-		if !$RayCast2D.is_colliding():
+		if $RayCast2D.is_colliding():
+			return $RayCast2D.get_collider()
+		else:
 			moving_direction = movement
 
 			var new_position = self_node.global_position + (moving_direction * 16)
