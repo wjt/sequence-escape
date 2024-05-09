@@ -26,12 +26,13 @@ func move(direction: Vector2) -> bool:
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 			return true
 		else:
-			print(self_node.name, " collided with ", $RayCast2D.get_collider().name)
+			var collider = $RayCast2D.get_collider()
+			print(self_node.name, " collided with ", collider.name)
+			if collider and collider.has_method("interact"):
+				collider.interact()
+			return false
 
 	return false
-
-func get_collider() -> Object:
-	return $RayCast2D.get_collider()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

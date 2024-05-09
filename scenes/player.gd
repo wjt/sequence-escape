@@ -21,8 +21,5 @@ func handle_input() -> bool:
 				play(dir.replace("move_", "walk_"))
 			else:
 				play(dir.replace("move_", "look_"))
-				var collider = $GridMovement.get_collider()
-				if collider and collider.has_method("interact"):
-					collider.interact()
 			return true
 	return false
