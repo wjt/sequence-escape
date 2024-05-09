@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmwcxpgcs685"]
+[gd_scene load_steps=6 format=3 uid="uid://cmwcxpgcs685"]
 
 [ext_resource type="Texture2D" uid="uid://dbm3qkpbp586n" path="res://assets/atlas.png" id="1_kaeey"]
 [ext_resource type="PackedScene" uid="uid://cp3drkse8mtm0" path="res://scenes/player.tscn" id="1_xidqi"]
+[ext_resource type="PackedScene" path="res://scenes/switch.tscn" id="3_l1rt0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhuqq"]
 texture = ExtResource("1_kaeey")
@@ -3032,3 +3033,14 @@ layer_0/tile_data = PackedInt32Array(0, 0, 3, 655360, 0, 5, 655379, 131072, 5, 1
 
 [node name="Player" parent="." instance=ExtResource("1_xidqi")]
 position = Vector2(16, 16)
+
+[node name="Switch" parent="." instance=ExtResource("3_l1rt0")]
+position = Vector2(72, 40)
+
+[node name="Switch2" parent="." instance=ExtResource("3_l1rt0")]
+position = Vector2(104, 72)
+colour = 1
+
+[node name="Switch3" parent="." instance=ExtResource("3_l1rt0")]
+position = Vector2(104, 40)
+colour = 2
