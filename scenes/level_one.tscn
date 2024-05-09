@@ -3026,10 +3026,7 @@ sources/0 = SubResource("TileSetAtlasSource_lhuqq")
 [node name="LevelOne" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_xidqi")]
-position = Vector2(336, 163)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+position = Vector2(16, 16)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_21na0")
