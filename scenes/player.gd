@@ -13,7 +13,7 @@ func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 
-func handle_input(event) -> bool:
+func handle_input() -> bool:
 	for dir in inputs:
 		if Input.is_action_just_pressed(dir):
 			if $GridMovement.move(inputs[dir]):

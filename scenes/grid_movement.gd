@@ -39,5 +39,5 @@ func _ready():
 	$RayCast2D.target_position = Vector2.DOWN * 16
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
