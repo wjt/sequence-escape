@@ -13,7 +13,7 @@ func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 
-func _unhandled_input(event):
+func handle_input(event) -> bool:
 	for dir in inputs:
 		if Input.is_action_just_pressed(dir):
 			if $GridMovement.move(inputs[dir]):
@@ -24,4 +24,5 @@ func _unhandled_input(event):
 				var collider = $GridMovement.get_collider()
 				if collider and collider.has_method("interact"):
 					collider.interact()
-			break
+			return true
+	return false

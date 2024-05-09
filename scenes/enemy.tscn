@@ -1,0 +1,161 @@
+[gd_scene load_steps=18 format=3 uid="uid://c10hm7rojujj4"]
+
+[ext_resource type="Texture2D" uid="uid://d3b8yfvwq1kd0" path="res://assets/sprite/free_monsters_0.png" id="1_5rds8"]
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_y0w7j"]
+[ext_resource type="PackedScene" uid="uid://dqng1iqsdcx4x" path="res://scenes/grid_movement.tscn" id="3_18twf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fovcy"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(63, 32, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfac7"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(15, 32, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhdnh"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(111, 32, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g12k"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(63, 80, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ykc7"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(15, 80, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82vsr"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(111, 80, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfucs"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(63, 128, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyfpa"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(15, 128, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oimx7"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(111, 128, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlgpi"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(63, 176, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilxb8"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(15, 176, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21ecy"]
+atlas = ExtResource("1_5rds8")
+region = Rect2(111, 176, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw17m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fovcy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fovcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfac7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fovcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhdnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fovcy")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g12k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ykc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g12k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82vsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g12k")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfucs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyfpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfucs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oimx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfucs")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlgpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilxb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlgpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21ecy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlgpi")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7po1"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_y0w7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sw17m")
+autoplay = "default"
+frame_progress = 0.168391
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h7po1")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_18twf")]
+self_node = NodePath("..")
