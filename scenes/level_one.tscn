@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmwcxpgcs685"]
+[gd_scene load_steps=7 format=3 uid="uid://cmwcxpgcs685"]
 
 [ext_resource type="Texture2D" uid="uid://dbm3qkpbp586n" path="res://assets/atlas.png" id="1_kaeey"]
 [ext_resource type="PackedScene" uid="uid://cp3drkse8mtm0" path="res://scenes/player.tscn" id="1_xidqi"]
-[ext_resource type="PackedScene" uid="uid://pektv31k017p" path="res://scenes/switch.tscn" id="3_l1rt0"]
+[ext_resource type="PackedScene" uid="uid://bwp8yn1jtmgxv" path="res://scenes/switch.tscn" id="3_l1rt0"]
+[ext_resource type="PackedScene" uid="uid://c1bw51ft4mehc" path="res://scenes/door.tscn" id="4_1w0wo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhuqq"]
 texture = ExtResource("1_kaeey")
@@ -3044,3 +3045,6 @@ colour = 1
 [node name="Switch3" parent="." instance=ExtResource("3_l1rt0")]
 position = Vector2(104, 40)
 colour = 2
+
+[node name="Door" parent="." instance=ExtResource("4_1w0wo")]
+position = Vector2(288, 72)
