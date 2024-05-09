@@ -14,3 +14,6 @@ extends StaticBody2D
 		else:
 			$AnimationPlayer.play_backwards("switch_on")
 		switched_on = new_value
+
+func flip():
+	self.switched_on = not self.switched_on
