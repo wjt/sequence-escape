@@ -67,10 +67,7 @@ func move():
 	
 	print(name, " moving towards ", closest_switch.name)
 	assert(closest_switch_path.size() >= 2)
-	if closest_switch_path.size() > 2:
-		var direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
-		if $GridMovement.move(direction):
-			$AnimatedSprite2D.play(_animations[direction])
-	elif closest_switch_path.size() == 2:
-		closest_switch.flip()
+	var direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
+	if $GridMovement.move(direction):
+		$AnimatedSprite2D.play(_animations[direction])
 	
