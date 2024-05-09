@@ -27,13 +27,12 @@ func _ready():
 	_astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	_astar.update()
 
-
 	for i in range(_astar.region.position.x, _astar.region.end.x):
 		for j in range(_astar.region.position.y, _astar.region.end.y):
 			var pos = Vector2i(i, j)
-			# This is just the index into the TileSet of the "grass" tile
-			# TODO: Find a less hacky way to detect when a cell is barrier
-			if tile_map.get_cell_atlas_coords(0, pos) != Vector2i(1, 4):
+			var tile_data = tile_map.get_cell_tile_data(0, pos)
+			var navigable = tile_data.get_custom_data("navigable") if tile_data else false
+			if not navigable:
 				_astar.set_point_solid(pos)
 
 	for switch in _switches:
