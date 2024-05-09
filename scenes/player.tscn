@@ -8,6 +8,18 @@
 atlas = ExtResource("1_a1bxp")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s408m"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkgye"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mufn"]
+atlas = ExtResource("1_a1bxp")
+region = Rect2(32, 96, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qc45v"]
 atlas = ExtResource("1_a1bxp")
 region = Rect2(0, 0, 32, 32)
@@ -15,10 +27,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3seo4"]
 atlas = ExtResource("1_a1bxp")
 region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s408m"]
-atlas = ExtResource("1_a1bxp")
-region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ly21"]
 atlas = ExtResource("1_a1bxp")
@@ -28,10 +36,6 @@ region = Rect2(0, 32, 32, 32)
 atlas = ExtResource("1_a1bxp")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qkgye"]
-atlas = ExtResource("1_a1bxp")
-region = Rect2(32, 64, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbulw"]
 atlas = ExtResource("1_a1bxp")
 region = Rect2(0, 64, 32, 32)
@@ -39,10 +43,6 @@ region = Rect2(0, 64, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1f1w"]
 atlas = ExtResource("1_a1bxp")
 region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mufn"]
-atlas = ExtResource("1_a1bxp")
-region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhftw"]
 atlas = ExtResource("1_a1bxp")
@@ -59,7 +59,31 @@ animations = [{
 "texture": SubResource("AtlasTexture_bn6ao")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"look_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s408m")
+}],
+"loop": true,
+"name": &"look_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkgye")
+}],
+"loop": true,
+"name": &"look_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mufn")
+}],
+"loop": true,
+"name": &"look_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -145,8 +169,8 @@ animations = [{
 
 [node name="Player" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_haywf")
-animation = &"walk_down"
-autoplay = "new_animation"
+animation = &"look_up"
+autoplay = "look_down"
 offset = Vector2(0, 4)
 script = ExtResource("1_bn62o")
 

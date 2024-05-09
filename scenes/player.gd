@@ -20,6 +20,7 @@ func _unhandled_input(event):
 				# FIXME: make animation names match actions
 				play(dir.replace("move_", "walk_"))
 			else:
+				play(dir.replace("move_", "look_"))
 				var collider = $GridMovement.get_collider()
 				if collider and collider.has_method("flip"):
 					collider.flip()
