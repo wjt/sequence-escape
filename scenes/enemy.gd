@@ -57,7 +57,12 @@ func move():
 				closest_switch_path = path
 
 	if not closest_switch:
-		# TODO: move in a random direction?
+		# Choose from UP, DOWN, LEFT, RIGHT and ZERO with equal probability
+		var x = randi() % 5 - 2
+		var direction = Vector2(signi(x % 2), x / 2)
+		print(name, " moving randomly ", direction)
+		if $GridMovement.move(direction):
+			$AnimatedSprite2D.play(_animations[direction])
 		return
 	
 	print(name, " moving towards ", closest_switch.name)
