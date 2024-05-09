@@ -15,7 +15,7 @@ func _ready():
 
 func _process(_delta):
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	$Grid.move(input_direction)
+	$GridMovement.move(input_direction)
 
 func _process_gone(_delta):
 	for dir in inputs:
