@@ -52,22 +52,23 @@ func move():
 			_astar.set_point_solid(target_cell, false)
 			var path = _astar.get_point_path(start_cell, target_cell)
 			_astar.set_point_solid(target_cell, true)
-			if not closest_switch_path or path.size() < closest_switch_path.size():
+			if not path:
+				print(name, " cannot reach ", switch)
+			elif not closest_switch_path or path.size() < closest_switch_path.size():
+				assert(path.size() != 1, "Enemy can't be in the same cell as a switch")
 				closest_switch = switch
 				closest_switch_path = path
 
-	if not closest_switch:
+	var direction = Vector2(0, 0)
+	if closest_switch:
+		print(name, " moving towards ", closest_switch.name)
+		direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
+	else:
 		# Choose from UP, DOWN, LEFT, RIGHT and ZERO with equal probability
 		var x = randi() % 5 - 2
-		var direction = Vector2(signi(x % 2), x / 2)
+		direction = Vector2(signi(x % 2), x / 2)
 		print(name, " moving randomly ", direction)
-		if $GridMovement.move(direction):
-			$AnimatedSprite2D.play(_animations[direction])
-		return
-	
-	print(name, " moving towards ", closest_switch.name)
-	assert(closest_switch_path.size() >= 2)
-	var direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
+
 	if $GridMovement.move(direction):
 		$AnimatedSprite2D.play(_animations[direction])
 	
