@@ -16,10 +16,11 @@ func _ready():
 func _unhandled_input(event):
 	for dir in inputs:
 		if Input.is_action_just_pressed(dir):
-			var collided_with = $GridMovement.move(inputs[dir])
-			if collided_with:
-				pass
-			else:
+			if $GridMovement.move(inputs[dir]):
 				# FIXME: make animation names match actions
 				play(dir.replace("move_", "walk_"))
+			else:
+				var collider = $GridMovement.get_collider()
+				if collider and collider.has_method("flip"):
+					collider.flip()
 			break

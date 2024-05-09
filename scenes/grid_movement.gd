@@ -4,7 +4,7 @@ extends Node2D
 
 var moving_direction: Vector2 = Vector2.ZERO
 
-func move(direction: Vector2) -> void:
+func move(direction: Vector2) -> bool:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN
 		if direction.y > 0: movement = Vector2.DOWN
@@ -16,9 +16,7 @@ func move(direction: Vector2) -> void:
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
 		
 		# Allow movement only if no collision in next tile
-		if $RayCast2D.is_colliding():
-			return $RayCast2D.get_collider()
-		else:
+		if !$RayCast2D.is_colliding():
 			moving_direction = movement
 
 			var new_position = self_node.global_position + (moving_direction * 16)
@@ -26,6 +24,14 @@ func move(direction: Vector2) -> void:
 			var tween = create_tween()
 			tween.tween_property(self_node, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+			return true
+		else:
+			print("Collided with ", $RayCast2D.get_collider())
+
+	return false
+
+func get_collider() -> Object:
+	return $RayCast2D.get_collider()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
