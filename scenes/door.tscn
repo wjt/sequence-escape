@@ -1,25 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1bw51ft4mehc"]
+[gd_scene load_steps=7 format=3 uid="uid://cd5femenuh08s"]
 
 [ext_resource type="Script" path="res://scenes/door.gd" id="1_gwyxr"]
 [ext_resource type="Texture2D" uid="uid://cfgce86oyxc2h" path="res://assets/sprite/free_chests.png" id="1_o11vr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xe22x"]
 size = Vector2(16, 16)
-
-[sub_resource type="Animation" id="Animation_7e80r"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [6, 18, 30, 42]
-}
 
 [sub_resource type="Animation" id="Animation_ddc3c"]
 length = 0.001
@@ -34,6 +19,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_7e80r"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 18, 30, 42]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b0iqt"]
