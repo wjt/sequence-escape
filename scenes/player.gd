@@ -1,6 +1,4 @@
-extends CharacterBody2D
-
-@onready var _animated_sprite = $AnimatedSprite2D
+extends AnimatedSprite2D
 
 var tile_size = 16  # FIXME
 
@@ -16,10 +14,14 @@ func _ready():
 	position += Vector2.ONE * tile_size/2
 
 func _process(_delta):
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	$Grid.move(input_direction)
+
+func _process_gone(_delta):
 	for dir in inputs:
 		if Input.is_action_just_pressed(dir):
 			# FIXME: make animation names match actions
-			_animated_sprite.play(dir.replace("move_", "walk_"))
+			play(dir.replace("move_", "walk_"))
 			var tween = self.create_tween()
 			tween.set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(self, "position", position + inputs[dir] * tile_size, 0.5)

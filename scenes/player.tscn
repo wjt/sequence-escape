@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crfa4feash4rg" path="res://assets/sprite/free_character_0.png" id="1_a1bxp"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_bn62o"]
+[ext_resource type="PackedScene" uid="uid://dqng1iqsdcx4x" path="res://scenes/grid_movement.tscn" id="3_1tyns"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn6ao"]
 atlas = ExtResource("1_a1bxp")
@@ -134,17 +135,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_01oyb"]
-size = Vector2(32, 32)
-
-[node name="Player" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("1_bn62o")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_haywf")
 animation = &"walk_down"
 autoplay = "walk_down"
+offset = Vector2(0, 4)
+script = ExtResource("1_bn62o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_01oyb")
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_1tyns")]
+self_node = NodePath("..")
