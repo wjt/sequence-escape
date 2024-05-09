@@ -16,9 +16,8 @@ func move(direction: Vector2) -> bool:
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
 		
 		# Allow movement only if no collision in next tile
+		moving_direction = movement
 		if !$RayCast2D.is_colliding():
-			moving_direction = movement
-
 			var new_position = self_node.global_position + (moving_direction * 16)
 
 			var tween = create_tween()
@@ -28,6 +27,11 @@ func move(direction: Vector2) -> bool:
 		else:
 			var collider = $RayCast2D.get_collider()
 			print(self_node.name, " collided with ", collider.name)
+			var tween = create_tween()
+			tween.tween_property(self_node, "position", self_node.global_position + (moving_direction * 4), speed / 2).set_trans(Tween.TRANS_LINEAR)
+			tween.tween_property(self_node, "position", self_node.global_position, speed / 2).set_trans(Tween.TRANS_LINEAR)
+			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+
 			if collider and collider.has_method("interact"):
 				collider.interact()
 			return false
