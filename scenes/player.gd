@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 signal turn_finished
 
-var tile_size = 16  # FIXME
-
 var inputs = {
 	"move_right": Vector2.RIGHT,
 	"move_left": Vector2.LEFT,
@@ -12,8 +10,8 @@ var inputs = {
 }
 
 func _ready():
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size/2
+	position = position.snapped(Vector2.ONE * Globals.TILE_SIZE)
+	position += Vector2.ONE * Globals.TILE_SIZE/2
 
 func handle_input() -> bool:
 	for dir in inputs:

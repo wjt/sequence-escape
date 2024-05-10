@@ -4,7 +4,6 @@ signal turn_finished
 
 @export var tile_map: TileMap
 
-var tile_size = 16  # FIXME
 var _astar: AStarGrid2D = AStarGrid2D.new()
 @onready var _switches = get_tree().get_nodes_in_group("switches")
 
@@ -16,13 +15,13 @@ var _animations = {
 }
 
 func _ready():
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size/2
+	position = position.snapped(Vector2.ONE * Globals.TILE_SIZE)
+	position += Vector2.ONE * Globals.TILE_SIZE / 2
 
 	var tile_map_size = tile_map.get_used_rect()
 	
 	_astar.region = tile_map_size
-	_astar.cell_size = Vector2i(tile_size, tile_size)
+	_astar.cell_size = Vector2i(Globals.TILE_SIZE, Globals.TILE_SIZE)
 	_astar.offset = _astar.cell_size * 0.5
 	_astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	_astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
