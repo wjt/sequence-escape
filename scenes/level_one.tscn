@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmwcxpgcs685"]
+[gd_scene load_steps=10 format=3 uid="uid://cmwcxpgcs685"]
 
 [ext_resource type="Script" path="res://scenes/level_one.gd" id="1_060tc"]
 [ext_resource type="Texture2D" uid="uid://dbm3qkpbp586n" path="res://assets/atlas.png" id="1_kaeey"]
 [ext_resource type="PackedScene" uid="uid://cp3drkse8mtm0" path="res://scenes/player.tscn" id="1_xidqi"]
+[ext_resource type="PackedScene" uid="uid://di780sxbp0db" path="res://scenes/enemy_path.tscn" id="3_awblp"]
 [ext_resource type="PackedScene" uid="uid://pektv31k017p" path="res://scenes/switch.tscn" id="3_l1rt0"]
 [ext_resource type="PackedScene" uid="uid://c10hm7rojujj4" path="res://scenes/enemy.tscn" id="3_pw347"]
 [ext_resource type="PackedScene" uid="uid://cd5femenuh08s" path="res://scenes/door.tscn" id="4_1w0wo"]
@@ -3048,12 +3049,14 @@ layer_0/tile_data = PackedInt32Array(0, 0, 3, 655360, 0, 5, 655379, 131072, 5, 1
 layer_1/name = "Rocks and Stuff"
 layer_1/tile_data = PackedInt32Array(196613, 196608, 1, 196612, 262144, 1, 131075, 327680, 1, 131074, 262144, 1, 196611, 393216, 1, 262147, 393216, 1, 262148, 196608, 1, 196610, 196608, 1, 327684, 196608, 1, 262158, 262144, 1, 327693, 196608, 1, 262157, 196608, 1, 327695, 196608, 1, 196620, 196608, 1, 196621, 262144, 1, 393224, 196608, 1, 458761, 262144, 1, 458762, 196608, 1, 524297, 196608, 1, 393227, 262144, 1, 458754, 262144, 1, 393218, 393216, 1, 327682, 262144, 1, 65538, 196608, 1, 65539, 196608, 1, 65541, 196608, 1, 65540, 262144, 1)
 
+[node name="EnemyPath" parent="." instance=ExtResource("3_awblp")]
+
 [node name="Enemy" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("3_pw347")]
 position = Vector2(288, 16)
 tile_map = NodePath("../TileMap")
 
 [node name="Player" parent="." instance=ExtResource("1_xidqi")]
-position = Vector2(16, 16)
+position = Vector2(72, 24)
 
 [node name="GreenSwitch" parent="." instance=ExtResource("3_l1rt0")]
 position = Vector2(72, 40)
@@ -3069,5 +3072,6 @@ colour = 2
 [node name="Door" parent="." instance=ExtResource("4_1w0wo")]
 position = Vector2(279, 104)
 
+[connection signal="path_changed" from="Enemy" to="." method="_on_enemy_path_changed"]
 [connection signal="turn_finished" from="Enemy" to="." method="_on_enemy_turn_finished"]
 [connection signal="turn_finished" from="Player" to="." method="_on_player_turn_finished"]

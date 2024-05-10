@@ -12,3 +12,6 @@ func _on_player_turn_finished():
 
 func _on_enemy_turn_finished():
 	enemy_moving = false
+
+func _on_enemy_path_changed(path):
+	$EnemyPath.points = path

@@ -1,6 +1,7 @@
 extends Node2D
 
 signal turn_finished
+signal path_changed(path: PackedVector2Array)
 
 @export var tile_map: TileMap
 
@@ -64,11 +65,13 @@ func move():
 	if closest_switch:
 		print(name, " moving towards ", closest_switch.name)
 		direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
+		path_changed.emit(closest_switch_path.slice(1))
 	else:
 		# Choose from UP, DOWN, LEFT, RIGHT and ZERO with equal probability
 		var x = randi() % 5 - 2
 		direction = Vector2(signi(x % 2), x / 2)
 		print(name, " moving randomly ", direction)
+		path_changed.emit(PackedVector2Array())
 
 	if not direction:
 		$AnimatedSprite2D.play("walk_down")

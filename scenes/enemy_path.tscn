@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://di780sxbp0db"]
+
+[node name="EnemyPath" type="Line2D"]
+width = 1.0
+default_color = Color(0.977667, 0.33, 1, 0.509804)
