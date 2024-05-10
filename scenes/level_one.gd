@@ -10,6 +10,5 @@ func _on_player_turn_finished():
 	enemy_moving = true
 	$Enemy.move()
 
-
 func _on_enemy_turn_finished():
 	enemy_moving = false

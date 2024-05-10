@@ -34,7 +34,8 @@ func _ready():
 			var pos = Vector2i(i, j)
 			var tile_data = tile_map.get_cell_tile_data(0, pos)
 			var navigable = tile_data.get_custom_data("navigable") if tile_data else false
-			if not navigable:
+			var has_rock = tile_map.get_cell_source_id(1, pos) >= 0
+			if not navigable or has_rock:
 				_astar.set_point_solid(pos)
 
 	for switch in _switches:
