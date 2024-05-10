@@ -4,6 +4,10 @@ extends Node2D
 
 var moving_direction: Vector2 = Vector2.ZERO
 
+func _tween_finished():
+	moving_direction = Vector2.ZERO
+	self_node.turn_finished.emit()
+
 func move(direction: Vector2) -> bool:
 	if moving_direction.length() == 0 && direction.length() > 0:
 		var movement = Vector2.DOWN
@@ -22,7 +26,7 @@ func move(direction: Vector2) -> bool:
 
 			var tween = create_tween()
 			tween.tween_property(self_node, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
-			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+			tween.tween_callback(_tween_finished)
 			return true
 		else:
 			var collider = $RayCast2D.get_collider()
@@ -30,7 +34,7 @@ func move(direction: Vector2) -> bool:
 			var tween = create_tween()
 			tween.tween_property(self_node, "position", self_node.global_position + (moving_direction * 4), speed / 2).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(self_node, "position", self_node.global_position, speed / 2).set_trans(Tween.TRANS_LINEAR)
-			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
+			tween.tween_callback(_tween_finished)
 
 			if collider and collider.has_method("interact"):
 				collider.interact()

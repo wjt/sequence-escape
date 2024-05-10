@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp3drkse8mtm0"]
+[gd_scene load_steps=18 format=3 uid="uid://cp3drkse8mtm0"]
 
 [ext_resource type="Texture2D" uid="uid://crfa4feash4rg" path="res://assets/sprite/free_character_0.png" id="1_a1bxp"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_bn62o"]
@@ -167,12 +167,21 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Player" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gp2q"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_bn62o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_haywf")
 animation = &"look_up"
 autoplay = "look_down"
 offset = Vector2(0, 4)
-script = ExtResource("1_bn62o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4gp2q")
 
 [node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_1tyns")]
 self_node = NodePath("..")

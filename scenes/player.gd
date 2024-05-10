@@ -1,4 +1,6 @@
-extends AnimatedSprite2D
+extends CharacterBody2D
+
+signal turn_finished
 
 var tile_size = 16  # FIXME
 
@@ -18,8 +20,8 @@ func handle_input() -> bool:
 		if Input.is_action_just_pressed(dir):
 			if $GridMovement.move(inputs[dir]):
 				# FIXME: make animation names match actions
-				play(dir.replace("move_", "walk_"))
+				$AnimatedSprite2D.play(dir.replace("move_", "walk_"))
 			else:
-				play(dir.replace("move_", "look_"))
+				$AnimatedSprite2D.play(dir.replace("move_", "look_"))
 			return true
 	return false

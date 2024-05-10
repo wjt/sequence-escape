@@ -3065,3 +3065,6 @@ colour = 2
 
 [node name="Door" parent="." instance=ExtResource("4_1w0wo")]
 position = Vector2(279, 104)
+
+[connection signal="turn_finished" from="Enemy" to="." method="_on_enemy_turn_finished"]
+[connection signal="turn_finished" from="Player" to="." method="_on_player_turn_finished"]

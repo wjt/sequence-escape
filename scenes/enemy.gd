@@ -1,5 +1,7 @@
 extends Node2D
 
+signal turn_finished
+
 @export var tile_map: TileMap
 
 var tile_size = 16  # FIXME
@@ -68,6 +70,9 @@ func move():
 		direction = Vector2(signi(x % 2), x / 2)
 		print(name, " moving randomly ", direction)
 
-	if $GridMovement.move(direction):
+	if not direction:
+		$AnimatedSprite2D.play("walk_down")
+		turn_finished.emit()
+	elif $GridMovement.move(direction):
 		$AnimatedSprite2D.play(_animations[direction])
 	
