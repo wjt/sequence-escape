@@ -13,6 +13,7 @@ func _unhandled_input(event):
 func _input(event):
 	if event.is_action_pressed("pause"):
 		$HUD.show()
+		$TouchControls.hide()
 		get_tree().paused = true
 
 func _on_player_turn_finished():
@@ -29,7 +30,15 @@ func _on_enemy_path_changed(path):
 func _on_door_escaped():
 	get_tree().paused = true
 	$HUD.set_victory()
+	$HUD.show()
+	$TouchControls.hide()
 	game_finished = true
 
 func _on_hud_restart():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func _on_hud_resume():
+	get_tree().paused = false
+	$HUD.hide()
+	$TouchControls.show()

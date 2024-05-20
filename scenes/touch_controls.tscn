@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://08iet81tbu1q"]
+
+[ext_resource type="Texture2D" uid="uid://bscupjs8cxeik" path="res://assets/arrow.png" id="1_0x4hy"]
+[ext_resource type="Texture2D" uid="uid://8heo5d5cnleh" path="res://assets/Pause.png" id="2_1pxjx"]
+
+[node name="TouchControls" type="CanvasLayer"]
+
+[node name="Up" type="TouchScreenButton" parent="."]
+position = Vector2(24, 120)
+rotation = 0.000487438
+texture_normal = ExtResource("1_0x4hy")
+action = "move_up"
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="."]
+position = Vector2(40, 168)
+rotation = 3.14159
+texture_normal = ExtResource("1_0x4hy")
+action = "move_down"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(56, 136)
+rotation = 1.5708
+texture_normal = ExtResource("1_0x4hy")
+action = "move_right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(8, 152)
+rotation = 4.71239
+texture_normal = ExtResource("1_0x4hy")
+action = "move_left"
+visibility_mode = 1
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2(24, 136)
+texture_normal = ExtResource("2_1pxjx")
+action = "pause"
+visibility_mode = 1

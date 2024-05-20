@@ -45,5 +45,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Restart"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

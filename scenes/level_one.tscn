@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmwcxpgcs685"]
+[gd_scene load_steps=12 format=3 uid="uid://cmwcxpgcs685"]
 
 [ext_resource type="Script" path="res://scenes/level_one.gd" id="1_060tc"]
 [ext_resource type="Texture2D" uid="uid://dbm3qkpbp586n" path="res://assets/atlas.png" id="1_kaeey"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c10hm7rojujj4" path="res://scenes/enemy.tscn" id="3_pw347"]
 [ext_resource type="PackedScene" uid="uid://cd5femenuh08s" path="res://scenes/door.tscn" id="4_1w0wo"]
 [ext_resource type="PackedScene" uid="uid://b474sheiplyj4" path="res://scenes/hud.tscn" id="8_0xqgd"]
+[ext_resource type="PackedScene" uid="uid://08iet81tbu1q" path="res://scenes/touch_controls.tscn" id="8_eh441"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhuqq"]
 texture = ExtResource("1_kaeey")
@@ -3073,6 +3074,8 @@ colour = 2
 [node name="Door" parent="." instance=ExtResource("4_1w0wo")]
 position = Vector2(279, 104)
 
+[node name="TouchControls" parent="." instance=ExtResource("8_eh441")]
+
 [node name="HUD" parent="." instance=ExtResource("8_0xqgd")]
 visible = false
 
@@ -3081,3 +3084,4 @@ visible = false
 [connection signal="turn_finished" from="Player" to="." method="_on_player_turn_finished"]
 [connection signal="escaped" from="Door" to="." method="_on_door_escaped"]
 [connection signal="restart" from="HUD" to="." method="_on_hud_restart"]
+[connection signal="resume" from="HUD" to="." method="_on_hud_resume"]

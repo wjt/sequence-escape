@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var _restart_button = $MarginContainer/HBoxContainer/Restart
 @onready var _resume_button = $MarginContainer/HBoxContainer/Resume
 
+signal resume
 signal restart
 
 func _ready():
@@ -22,12 +23,10 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("pause"):
 		# Avoid the game immediately re-pausing the game
 		get_viewport().set_input_as_handled()
-		resume()
+		resume.emit()
 
-func resume():
-	get_tree().paused = false
-	hide()
+func _on_resume_pressed():
+	resume.emit()
 
 func _on_restart_pressed():
-	get_tree().paused = false
 	restart.emit()
