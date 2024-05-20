@@ -40,11 +40,12 @@ func _ready():
 
 	for switch in _switches:
 		_astar.set_point_solid(tile_map.local_to_map(switch.position))
-		
+
 # TODO: route around player?
 func move():
 	var closest_switch = null
 	var closest_switch_path: PackedVector2Array = PackedVector2Array()
+
 	var start_cell = tile_map.local_to_map(position)
 
 	for switch in _switches:
@@ -55,22 +56,30 @@ func move():
 			var path = _astar.get_point_path(start_cell, target_cell)
 			_astar.set_point_solid(target_cell, true)
 			if not path:
-				print(name, " cannot reach ", switch)
+				if Globals.DEBUG:
+					print(name, " cannot reach ", switch)
 			elif not closest_switch_path or path.size() < closest_switch_path.size():
+				if Globals.DEBUG:
+					print(switch.name, " is the closest switch so far")
 				assert(path.size() != 1, "Enemy can't be in the same cell as a switch")
 				closest_switch = switch
 				closest_switch_path = path
+			else:
+				if Globals.DEBUG:
+					print(switch.name, " is not the closest switch")
 
 	var direction = Vector2(0, 0)
 	if closest_switch:
-		print(name, " moving towards ", closest_switch.name)
+		if Globals.DEBUG:
+			print(name, " moving towards ", closest_switch.name)
 		direction = (closest_switch_path[1] - closest_switch_path[0]).normalized()
 		path_changed.emit(closest_switch_path.slice(1))
 	else:
 		# Choose from UP, DOWN, LEFT, RIGHT and ZERO with equal probability
 		var x = randi() % 5 - 2
 		direction = Vector2(signi(x % 2), x / 2)
-		print(name, " moving randomly ", direction)
+		if Globals.DEBUG:
+			print(name, " moving randomly ", direction)
 		path_changed.emit(PackedVector2Array())
 
 	if not direction:
@@ -78,4 +87,3 @@ func move():
 		turn_finished.emit()
 	elif $GridMovement.move(direction):
 		$AnimatedSprite2D.play(_animations[direction])
-	

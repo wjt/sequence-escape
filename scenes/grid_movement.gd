@@ -30,7 +30,8 @@ func move(direction: Vector2) -> bool:
 			return true
 		else:
 			var collider = $RayCast2D.get_collider()
-			print(self_node.name, " collided with ", collider.name)
+			if Globals.DEBUG:
+				print(self_node.name, " collided with ", collider.name)
 			var tween = create_tween()
 			tween.tween_property(self_node, "position", self_node.global_position + (moving_direction * 4), speed / 2).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(self_node, "position", self_node.global_position, speed / 2).set_trans(Tween.TRANS_LINEAR)
