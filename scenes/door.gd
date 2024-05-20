@@ -3,13 +3,16 @@ extends StaticBody2D
 @onready var switches = get_tree().get_nodes_in_group("switches")
 var is_open = false
 
+signal escaped
+
 func _ready():
 	for switch in switches:
 		switch.connect("flipped", _on_switch_flipped)
 
-func interact():
+func interact(_actor):
 	if is_open:
-		print("you win")
+		# TODO: check actor is player
+		escaped.emit()
 
 func _on_switch_flipped():
 	var should_open = true

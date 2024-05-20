@@ -38,7 +38,7 @@ func move(direction: Vector2) -> bool:
 			tween.tween_callback(_tween_finished)
 
 			if collider and collider.has_method("interact"):
-				collider.interact()
+				collider.interact(self_node)
 			return false
 
 	return false

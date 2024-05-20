@@ -21,5 +21,5 @@ func flip():
 	self.switched_on = not self.switched_on
 	flipped.emit()
 
-func interact():
+func interact(_actor):
 	flip()
