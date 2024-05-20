@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b474sheiplyj4"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_xox6x"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_xox6x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="StepCounter" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="YouWin" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You win!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"
+
+[node name="Restart" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
